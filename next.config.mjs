@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactCompiler: true,
   output: "export",
-  images: {
-    unoptimized: true,
-  },
   basePath: "/portfolio",
+  images: {
+    unoptimized: true
+  },
+  reactCompiler: true
 };
 
 export default nextConfig;
