@@ -73,6 +73,10 @@ export default function Projects() {
             </div>
 
             <h3 className="text-3xl text-[#ffef4d]">{project.title}</h3>
+            <h4 className="text-sm uppercase tracking-[0.2em] text-[#ffef4d]/30">
+              {project.category}
+            </h4>
+            {/* <p className="text-sm text-[#ffef4d]/60">{project.description}</p> */}
           </div>
         ))}
       </div>

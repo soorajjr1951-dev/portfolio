@@ -29,44 +29,57 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
           {/* LEFT SIDE */}
-          <div className="lg:col-span-7 space-y-20">
-            <h1 className="reveal-el text-7xl md:text-[10rem] font-black uppercase tracking-tighter leading-none text-[#ffef4d]">
+          <div className="lg:col-span-7 space-y-24 relative">
+            {/* subtle background text */}
+            <div className="absolute -top-20 left-0 text-[12rem] font-black text-[#ffef4d]/5 select-none pointer-events-none">
+              ENGINE
+            </div>
+
+            {/* TITLE */}
+            <h1 className="reveal-el text-6xl md:text-[9rem] font-black uppercase tracking-tighter leading-none text-[#ffef4d] relative z-10">
               The <br />
               <span className="text-[#ffef4d]/50">Engine.</span>
             </h1>
 
-            <div className="reveal-el space-y-8 text-2xl md:text-3xl text-[#ffef4d]/40 leading-relaxed font-light">
+            {/* ABOUT TEXT */}
+            <div className="reveal-el space-y-10 text-xl md:text-2xl text-[#ffef4d]/40 leading-relaxed font-light max-w-2xl">
               <p>
-                I am a specialized systems engineer and interface architect with
-                a focus on building high-concurrency environments and
-                high-fidelity user experiences.
+                I design and engineer digital systems that balance
+                <span className="text-[#ffef4d]"> performance</span>,
+                <span className="text-[#ffef4d]"> scalability</span>, and
+                <span className="text-[#ffef4d]"> experience</span>.
               </p>
 
-              <p className="text-[#ffef4d]">
-                My work exists at the intersection of absolute logic and
-                creative intuition.
+              <p>
+                My work focuses on building structured architectures where
+                design and engineering merge into one cohesive system.
               </p>
             </div>
 
-            <div className="reveal-el grid grid-cols-1 md:grid-cols-2 gap-px bg-[#ffef4d]/10 border border-[#ffef4d]/10">
+            {/* STATS GRID */}
+            <div className="reveal-el grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 { icon: Globe, label: "Deployment", val: "Global.v6" },
                 { icon: Cpu, label: "Kernel", val: "TypeScript" },
                 { icon: Database, label: "Storage", val: "Vortex.db" },
                 { icon: Code, label: "Pattern", val: "Modular" },
               ].map((stat, i) => (
-                <div key={i} className="p-10 bg-[#26283B] space-y-4">
-                  <stat.icon className="text-[#ffef4d]" size={20} />
+                <div
+                  key={i}
+                  className="group relative p-10 border border-[#ffef4d]/10 bg-[#26283B] hover:border-[#ffef4d]/40 transition duration-500 overflow-hidden"
+                >
+                  {/* hover glow */}
+                  <div className="absolute inset-0 bg-[#ffef4d]/5 opacity-0 group-hover:opacity-100 transition duration-500" />
 
-                  <div>
-                    <p className="text-[9px] uppercase tracking-widest text-[#ffef4d]/20">
-                      {stat.label}
-                    </p>
+                  <stat.icon className="text-[#ffef4d] mb-6" size={24} />
 
-                    <p className="text-xl font-bold uppercase tracking-tighter text-[#ffef4d]">
-                      {stat.val}
-                    </p>
-                  </div>
+                  <p className="text-[9px] uppercase tracking-widest text-[#ffef4d]/30">
+                    {stat.label}
+                  </p>
+
+                  <p className="text-2xl font-bold uppercase tracking-tight text-[#ffef4d]">
+                    {stat.val}
+                  </p>
                 </div>
               ))}
             </div>
@@ -74,8 +87,6 @@ export default function AboutPage() {
 
           {/* RIGHT SIDE */}
           <div className="lg:col-span-5 space-y-12 sticky top-40">
-            
-
             <div className="reveal-el space-y-8 border-l-2 border-[#ffef4d] pl-12 py-4">
               <h4 className="text-[10px] uppercase tracking-widest text-[#ffef4d]">
                 Manifesto_
