@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import {
   ArrowLeft,
   Globe,
@@ -51,24 +52,28 @@ export default function ProjectDetail({ project }) {
   };
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#26283B] pt-40 pb-32 px-12 relative overflow-hidden">
+    <div
+      ref={containerRef}
+      className="min-h-screen bg-[#26283B] pt-40 pb-32 px-12 relative overflow-hidden"
+    >
       {/* Ambient background accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vh] bg-[#ffef4d]/[0.02] rounded-full blur-[200px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto space-y-32 relative z-10">
         {/* Navigation */}
-        <button 
+        <button
           onClick={goBack}
           className="flex items-center gap-4 text-[11px] font-medium uppercase tracking-[0.3em] text-[#ffef4d]/40 hover:text-[#ffef4d] transition-all group"
         >
-          <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform" />
+          <ArrowLeft
+            size={16}
+            className="group-hover:-translate-x-2 transition-transform"
+          />
           Back to Projects
         </button>
 
         <div className="grid lg:grid-cols-12 gap-20">
-
           <div className="lg:col-span-5 space-y-12">
-
             <p className="reveal-text text-xs text-[#ffef4d]/30 uppercase">
               Project Details // {project.category}
             </p>
@@ -97,13 +102,15 @@ export default function ProjectDetail({ project }) {
             </a>
           </div>
 
-          <div className="lg:col-span-7">
-            <img
+          <div className="lg:col-span-7 relative aspect-video">
+            <Image
               src={project.image}
-              className="reveal-img w-full object-cover"
+              alt={project.title}
+              fill
+              className="reveal-img object-cover"
+              priority
             />
           </div>
-
         </div>
       </div>
     </div>

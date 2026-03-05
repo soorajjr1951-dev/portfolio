@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -56,9 +57,12 @@ export default function Projects() {
             className="project-card cursor-pointer group space-y-6"
           >
             <div className="relative aspect-[16/10] overflow-hidden border border-[#ffef4d]/20">
-              <img
+              <Image
                 src={project.image}
-                className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0"
+                alt={project.title}
+                fill
+                className="object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-all"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
 
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100">
