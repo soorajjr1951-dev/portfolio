@@ -13,16 +13,14 @@ export default function DockNavbar({ activeSection, setActiveSection }) {
     { id: "contact", label: "Contact", icon: Mail },
   ];
 
-  /* prevents scroll observer during programmatic scroll */
-  const isScrollingRef = useRef(false);
+  /* keeps track of programmatic scroll target */
+  const targetSectionRef = useRef(null);
 
   useEffect(() => {
     const sections = ["home", "about", "works", "contact"];
     let ticking = false;
 
     const computeActive = () => {
-      if (isScrollingRef.current) return;
-
       const mid = window.innerHeight / 2;
       let bestId = null;
       let bestDist = Infinity;
@@ -41,7 +39,20 @@ export default function DockNavbar({ activeSection, setActiveSection }) {
         }
       });
 
-      if (bestId) setActiveSection(bestId);
+      if (!bestId) return;
+
+      /* prevents flicker during smooth scroll */
+      if (targetSectionRef.current && bestId !== targetSectionRef.current) {
+        ticking = false;
+        return;
+      }
+
+      setActiveSection(bestId);
+
+      /* unlock when target reached */
+      if (bestId === targetSectionRef.current) {
+        targetSectionRef.current = null;
+      }
 
       ticking = false;
     };
@@ -68,8 +79,8 @@ export default function DockNavbar({ activeSection, setActiveSection }) {
     const element = document.getElementById(id);
     if (!element) return;
 
-    /* lock scroll observer */
-    isScrollingRef.current = true;
+    /* set target section */
+    targetSectionRef.current = id;
 
     setActiveSection(id);
 
@@ -77,11 +88,6 @@ export default function DockNavbar({ activeSection, setActiveSection }) {
       behavior: "smooth",
       block: "start",
     });
-
-    /* unlock observer after scroll finishes */
-    setTimeout(() => {
-      isScrollingRef.current = false;
-    }, 700);
   };
 
   return (
