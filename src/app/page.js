@@ -4,13 +4,14 @@ import { useState, useEffect, useRef } from "react";
 
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
-import Pricing from "@/components/Pricing";
+// import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import SEO from "@/components/SEO";
 import ProjectDetail from "@/components/ProjectDetail";
 import TransitionOverlay from "@/components/TransitionOverlay";
 import Loader from "@/components/Loader";
 import DockNavbar from "@/components/DockNavbar";
+import AboutPage from "@/components/AboutPage";
 
 import { AnimatePresence } from "framer-motion";
 
@@ -94,13 +95,17 @@ export default function HomePage() {
               <Hero />
             </section>
 
+            <section id="about">
+              <AboutPage />
+            </section>
+
             <section id="works">
               <Projects onProjectClick={handleProjectClick} />
             </section>
 
-            <section id="pricing">
+            {/* <section id="pricing">
               <Pricing />
-            </section>
+            </section> */}
 
             <section id="contact">
               <Contact />

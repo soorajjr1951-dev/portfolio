@@ -1,9 +1,23 @@
 "use client";
 
 export default function Contact() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const name = e.target.elements[0].value;
+    const email = e.target.elements[1].value;
+    const message = e.target.elements[2].value;
+
+    const whatsappNumber = "7306087506";
+    const text = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <section className="relative min-h-screen py-48 px-12 flex items-center overflow-hidden bg-[#26283B]">
-      
       {/* Section Number */}
       <div className="absolute left-12 top-1/2 -translate-y-1/2 select-none">
         <span className="text-[2rem] font-light italic text-[#ffef4d]/10">
@@ -12,13 +26,9 @@ export default function Contact() {
       </div>
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-32 items-start">
-
         {/* Left Content */}
         <div className="space-y-16">
-
-          <h2 className="text-6xl font-medium text-[#ffef4d]">
-            Get in Touch
-          </h2>
+          <h2 className="text-6xl font-medium text-[#ffef4d]">Get in Touch</h2>
 
           <div className="space-y-8 max-w-md">
             <p className="text-lg text-[#ffef4d]/60 leading-relaxed font-light italic">
@@ -30,7 +40,6 @@ export default function Contact() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-10">
-
             <div className="space-y-3">
               <p className="text-[11px] uppercase tracking-[0.3em] text-[#ffef4d]/30">
                 Location
@@ -60,24 +69,18 @@ export default function Contact() {
                 hello@sooraj.dev
               </p>
             </div>
-
           </div>
         </div>
 
         {/* Form */}
         <div className="bg-[#26283B]/50 p-16 border border-[#ffef4d]/20 relative group backdrop-blur-sm">
-
           <div className="absolute inset-0 border border-[#ffef4d]/10 scale-[1.02] -z-10 group-hover:scale-100 transition-transform duration-700"></div>
 
           <h3 className="text-2xl uppercase tracking-[0.1em] mb-16 text-[#ffef4d]/80">
             Send a Message
           </h3>
 
-          <form
-            className="space-y-10"
-            onSubmit={(e) => e.preventDefault()}
-          >
-
+          <form className="space-y-10" onSubmit={handleSubmit}>
             <div className="space-y-2 group">
               <p className="text-[10px] uppercase tracking-[0.2em] text-[#ffef4d]/40 group-focus-within:text-[#ffef4d]">
                 Your Name
@@ -86,6 +89,7 @@ export default function Contact() {
               <input
                 type="text"
                 placeholder="Enter your name"
+                required
                 className="w-full border-b border-[#ffef4d]/20 bg-transparent py-2 text-[#ffef4d] outline-none focus:border-[#ffef4d]"
               />
             </div>
@@ -98,6 +102,7 @@ export default function Contact() {
               <input
                 type="email"
                 placeholder="Email@domain.com"
+                required
                 className="w-full border-b border-[#ffef4d]/20 bg-transparent py-2 text-[#ffef4d] outline-none focus:border-[#ffef4d]"
               />
             </div>
@@ -109,6 +114,7 @@ export default function Contact() {
 
               <textarea
                 placeholder="How can I help you?"
+                required
                 className="w-full border-b border-[#ffef4d]/20 bg-transparent py-2 text-[#ffef4d] outline-none focus:border-[#ffef4d] min-h-[120px] resize-none"
               />
             </div>
@@ -121,11 +127,8 @@ export default function Contact() {
                 Send Message →
               </button>
             </div>
-
           </form>
-
         </div>
-
       </div>
     </section>
   );

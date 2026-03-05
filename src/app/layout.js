@@ -19,14 +19,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-[#26283B]`}
       >
         <TransitionProvider>
           {children}
 
-          <footer className="py-16 text-center border-t border-[#ffef4d]/20">
+          <footer className="py-16 pb-36 text-center border-t border-[#ffef4d]/20">
             <p className="text-[#ffef4d]/50 text-sm tracking-widest uppercase">
               © 2026 Sooraj — Web Development
             </p>

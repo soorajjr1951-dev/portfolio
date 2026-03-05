@@ -2,41 +2,67 @@
 
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { User, Layers, Mail, CreditCard } from "lucide-react";
-
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { User, Layers, Mail, CreditCard, Info } from "lucide-react";
 
 export default function DockNavbar({ activeSection, setActiveSection }) {
   const navItems = [
     { id: "home", label: "Home", icon: User },
+    { id: "about", label: "About", icon: Info },
     { id: "works", label: "Websites", icon: Layers },
-    { id: "pricing", label: "Services", icon: CreditCard },
+    // { id: "pricing", label: "Services", icon: CreditCard },
     { id: "contact", label: "Contact", icon: Mail },
   ];
 
   useEffect(() => {
-    const sections = ["home", "works", "pricing", "contact"];
+    // consistently set the active section based on which section's
+    // midpoint is closest to the viewport midpoint. this strategy is
+    // direction-agnostic and eliminates arbitrary thresholds.
+    const sections = ["home", "about", "works", "contact"];
+    let ticking = false;
 
-    sections.forEach((id) => {
-      ScrollTrigger.create({
-        trigger: `#${id}`,
-        start: "top center",
-        end: "bottom center",
-        onEnter: () => setActiveSection(id),
-        onEnterBack: () => setActiveSection(id),
+    const computeActive = () => {
+      const mid = window.innerHeight / 2;
+      let bestId = null;
+      let bestDist = Infinity;
+
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const sectionMid = rect.top + rect.height / 2;
+        const dist = Math.abs(sectionMid - mid);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestId = id;
+        }
       });
-    });
+
+      if (bestId) {
+        setActiveSection(bestId);
+      }
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(computeActive);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    computeActive(); // initial
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      window.removeEventListener("scroll", onScroll);
     };
   }, [setActiveSection]);
 
   const scrollToSection = (e, id) => {
     e.preventDefault();
+
+    // immediately update activeSection so the bubble highlights right away
+    setActiveSection(id);
 
     const element = document.getElementById(id);
 
