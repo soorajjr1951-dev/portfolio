@@ -26,16 +26,13 @@ export default function AboutPage() {
       ref={containerRef}
       className="relative pt-28 md:pt-40 pb-20 md:pb-24 px-6 md:px-10 lg:px-16 min-h-screen bg-[#26283B]"
     >
-
       {/* OPTIONAL: ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vh] bg-[#ffef4d]/5 blur-[200px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
-
           {/* LEFT SIDE */}
           <div className="lg:col-span-7 space-y-16 md:space-y-24 relative">
-
             {/* OPTIONAL: background word (hidden on small screens to prevent overflow) */}
             <div className="absolute -top-10 md:-top-20 left-0 text-[6rem] md:text-[10rem] lg:text-[12rem] font-black text-[#ffef4d]/5 select-none pointer-events-none hidden sm:block">
               ENGINE
@@ -74,11 +71,13 @@ export default function AboutPage() {
                   key={i}
                   className="group relative p-6 sm:p-8 md:p-10 border border-[#ffef4d]/10 bg-[#26283B] hover:border-[#ffef4d]/40 transition duration-500 overflow-hidden"
                 >
-
                   {/* OPTIONAL hover glow */}
                   <div className="absolute inset-0 bg-[#ffef4d]/5 opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
-                  <stat.icon className="text-[#ffef4d] mb-4 md:mb-6" size={22} />
+                  <stat.icon
+                    className="text-[#ffef4d] mb-4 md:mb-6"
+                    size={22}
+                  />
 
                   <p className="text-[9px] uppercase tracking-widest text-[#ffef4d]/30">
                     {stat.label}
@@ -94,10 +93,8 @@ export default function AboutPage() {
 
           {/* RIGHT SIDE */}
           <div className="lg:col-span-5 space-y-10 md:space-y-12 lg:sticky lg:top-40">
-
             {/* NOTE: sticky disabled on small screens for better UX */}
             <div className="reveal-el space-y-6 md:space-y-8 border-l-2 border-[#ffef4d] pl-6 md:pl-12 py-4">
-
               <h4 className="text-[10px] uppercase tracking-widest text-[#ffef4d]">
                 Manifesto_
               </h4>
@@ -106,9 +103,7 @@ export default function AboutPage() {
                 "Performance is not a feature; it is a foundation. Code should
                 be as readable as literature and as efficient as physics."
               </p>
-
             </div>
-
           </div>
         </div>
       </div>

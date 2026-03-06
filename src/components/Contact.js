@@ -18,7 +18,6 @@ export default function Contact() {
 
   return (
     <section className="relative min-h-screen py-48 px-6 md:px-12 flex items-center overflow-hidden bg-[#26283B]">
-
       {/* Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vh] bg-[#ffef4d]/5 blur-[200px] pointer-events-none"></div>
 
@@ -30,10 +29,8 @@ export default function Contact() {
       </div>
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 items-start">
-
         {/* LEFT SIDE */}
         <div className="space-y-16">
-
           <h2 className="text-5xl md:text-6xl font-medium text-[#ffef4d]">
             Get in Touch
           </h2>
@@ -48,7 +45,6 @@ export default function Contact() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-10">
-
             <div className="space-y-3">
               <p className="text-[11px] uppercase tracking-[0.3em] text-[#ffef4d]/30">
                 Location
@@ -78,13 +74,11 @@ export default function Contact() {
                 hello@sooraj.dev
               </p>
             </div>
-
           </div>
         </div>
 
         {/* FORM */}
         <div className="bg-[#26283B]/50 p-10 md:p-16 border border-[#ffef4d]/20 relative group backdrop-blur-sm transition-all duration-500 hover:border-[#ffef4d]/40">
-
           {/* card hover frame */}
           <div className="absolute inset-0 border border-[#ffef4d]/10 scale-[1.02] -z-10 group-hover:scale-[1.01] transition-transform duration-700"></div>
 
@@ -93,7 +87,6 @@ export default function Contact() {
           </h3>
 
           <form className="space-y-10" onSubmit={handleSubmit}>
-
             {/* Name */}
             <div className="space-y-2 group">
               <p className="text-[10px] uppercase tracking-[0.2em] text-[#ffef4d]/40 group-focus-within:text-[#ffef4d]">
@@ -150,10 +143,8 @@ export default function Contact() {
                 </span>
               </button>
             </div>
-
           </form>
         </div>
-
       </div>
     </section>
   );
