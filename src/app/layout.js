@@ -13,8 +13,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Sooraj | Web Developer",
-  description: "Portfolio of Sooraj — Web Development & Engineering",
+  metadataBase: new URL("https://soorajdev.cloud"),
+
+  title: {
+    default: "Sooraj — Web Developer",
+    template: "%s | Sooraj Dev",
+  },
+
+  description:
+    "Portfolio of Sooraj, a web developer crafting modern digital experiences using Next.js, React and scalable backend technologies.",
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
+
+  openGraph: {
+    title: "Sooraj — Web Developer",
+    description:
+      "Portfolio of Sooraj, a web developer crafting modern digital experiences.",
+    url: "https://soorajdev.cloud",
+    siteName: "Sooraj Dev",
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Sooraj — Web Developer",
+    description:
+      "Portfolio of Sooraj, a web developer crafting modern digital experiences.",
+  },
 };
 
 export default function RootLayout({ children }) {
