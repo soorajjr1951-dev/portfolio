@@ -18,7 +18,7 @@ const TransitionOverlay = forwardRef((props, ref) => {
 
         gsap.to(blocks, {
           scaleY: 1,
-          duration: 0.8,
+          duration: 0.5,
           stagger: { each: 0.08, grid: [2, 5], axis: "x" },
           ease: "power4.inOut",
           onComplete: resolve,
@@ -31,7 +31,7 @@ const TransitionOverlay = forwardRef((props, ref) => {
 
         gsap.to(blocks, {
           scaleY: 0,
-          duration: 0.8,
+          duration: 0.5,
           stagger: { each: 0.08, grid: [2, 5], axis: "x" },
           ease: "power4.inOut",
           onComplete: () => {
@@ -51,7 +51,7 @@ const TransitionOverlay = forwardRef((props, ref) => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 flex flex-col z-[999] pointer-events-none"
+      className="fixed inset-0 flex flex-col z-999 pointer-events-none"
     >
       <div className="flex-1 flex">
         {[...Array(5)].map((_, i) => (

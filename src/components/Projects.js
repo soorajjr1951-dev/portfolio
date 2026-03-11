@@ -40,7 +40,11 @@ export default function Projects() {
   };
 
   return (
-    <section ref={sectionRef} id="works" className="py-64 bg-[#26283B]">
+    <section
+      ref={sectionRef}
+      id="works"
+      className="py-32 md:py-40 bg-[#26283B]"
+    >
       <div className="px-12 mb-32 max-w-7xl mx-auto">
         <h2 className="text-7xl md:text-[10rem] text-[#ffef4d]">
           Selected
@@ -56,7 +60,7 @@ export default function Projects() {
             onClick={() => openProject(project.id)}
             className="project-card cursor-pointer group space-y-6"
           >
-            <div className="relative aspect-[16/10] overflow-hidden border border-[#ffef4d]/20">
+            <div className="relative aspect-16/10 overflow-hidden border border-[#ffef4d]/20">
               <Image
                 src={project.image}
                 alt={project.title}

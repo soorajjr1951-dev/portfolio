@@ -92,28 +92,14 @@ export default function DockNavbar({ activeSection, setActiveSection }) {
 
   return (
     <div className="fixed bottom-0 md:bottom-8 left-0 right-0 md:left-1/2 md:-translate-x-1/2 z-50 flex justify-center px-4 md:px-0">
-
       {/* OPTIONAL dock glow */}
       <div className="absolute w-[420px] h-[120px] bg-[#ffef4d]/5 blur-[80px] rounded-full pointer-events-none hidden md:block" />
 
       <nav
         aria-label="Main Navigation"
-        className="
-          w-full md:w-[360px]
-          bg-[#1a1b2b]/90
-          h-[64px]
-          md:rounded-3xl
-          rounded-t-3xl
-          flex items-center
-          relative
-          border-t md:border
-          border-[#ffef4d]/10
-          shadow-[0_20px_50px_rgba(0,0,0,0.5)]
-          backdrop-blur-lg
-        "
+        className="w-full md:w-[360px] bg-[#1a1b2b]/90 h-[64px] md:rounded-3xl rounded-t-3xl flex items-center relative border-t md:border border-[#ffef4d]/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-lg"
       >
         <div className="w-full flex items-center justify-around relative z-10 px-2">
-
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
