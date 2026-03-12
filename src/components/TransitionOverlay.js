@@ -51,26 +51,32 @@ const TransitionOverlay = forwardRef((props, ref) => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 flex flex-col z-999 pointer-events-none"
+      className="fixed inset-0 z-[999] pointer-events-none flex flex-col w-screen h-screen overflow-hidden"
     >
-      <div className="flex-1 flex">
+      {/* Row 1 */}
+      <div className="flex flex-1 w-full">
         {[...Array(5)].map((_, i) => (
           <div
             key={`r1-${i}`}
             ref={(el) => (row1Blocks.current[i] = el)}
             style={blockStyle}
-            className="flex-1 bg-[#ffef4d] origin-top"
+            className={`bg-[#ffef4d] origin-top h-full ${
+              i === 0 ? "w-[20%]" : "w-[20%] -ml-[1px]"
+            }`}
           />
         ))}
       </div>
 
-      <div className="flex-1 flex">
+      {/* Row 2 */}
+      <div className="flex flex-1 w-full -mt-[1px]">
         {[...Array(5)].map((_, i) => (
           <div
             key={`r2-${i}`}
             ref={(el) => (row2Blocks.current[i] = el)}
             style={blockStyle}
-            className="flex-1 bg-[#ffef4d] origin-bottom"
+            className={`bg-[#ffef4d] origin-bottom h-full ${
+              i === 0 ? "w-[20%]" : "w-[20%] -ml-[1px]"
+            }`}
           />
         ))}
       </div>

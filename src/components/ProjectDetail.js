@@ -42,14 +42,23 @@ export default function ProjectDetail({ project }) {
         duration: 2,
         ease: "power2.out",
       });
+
+      gsap.from(".tech-icon", {
+        y: 30,
+        opacity: 0,
+        stagger: 0.08,
+        delay: 0.4,
+      });
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   const goBack = () => {
-    router.push("/");
+    router.back();
   };
+
+  const tags = Array.isArray(project?.tags) ? project.tags : [];
 
   return (
     <div
@@ -90,13 +99,12 @@ export default function ProjectDetail({ project }) {
 
             {/* Tech Stack */}
             <div className="grid grid-cols-4 gap-6 pt-4">
-              <TechIcon icon={Layers} label="Next.js" />
-              <TechIcon icon={Atom} label="React" />
-              <TechIcon icon={Paintbrush} label="CSS" />
-              <TechIcon icon={Code2} label="HTML" />
+              {tags.map((tag) => (
+                <TechIcon key={tag} label={tag} />
+              ))}
             </div>
 
-            {/* Go Live Button (KEEP YOUR CURRENT DESIGN) */}
+            {/* Go Live Button */}
             <a
               href={project.liveUrl}
               target="_blank"
@@ -114,7 +122,7 @@ export default function ProjectDetail({ project }) {
             </a>
           </div>
 
-          {/* RIGHT IMAGE (KEEP YOUR CURRENT IMAGE DESIGN) */}
+          {/* RIGHT IMAGE */}
           <div className="lg:col-span-7 relative flex items-center justify-center">
             <div className="relative w-full max-w-4xl group">
               <div className="absolute -inset-10 bg-[#ffef4d]/10 blur-[120px] opacity-40 group-hover:opacity-70 transition duration-700" />
@@ -132,6 +140,7 @@ export default function ProjectDetail({ project }) {
                     alt={project.title}
                     fill
                     priority
+                    sizes="(max-width:768px) 100vw, 60vw"
                     className="reveal-img object-cover transition duration-700 group-hover:scale-110"
                   />
 
@@ -148,23 +157,41 @@ export default function ProjectDetail({ project }) {
 
         {/* Extra Project Info Section */}
         <div className="grid sm:grid-cols-3 gap-10 pt-20 border-t border-[#ffef4d]/10">
-          <InfoBlock title="Role" value="Full Stack Developer" />
-          <InfoBlock title="Stack" value="Next.js / React / Tailwind" />
-          <InfoBlock title="Year" value="2026" />
+          <InfoBlock title="Role" value={project.role} />
+          <InfoBlock title="Project Type" value={project.type} />
+          <InfoBlock title="Year" value={project.year} />
         </div>
       </div>
     </div>
   );
 }
 
-function TechIcon({ icon: Icon, label }) {
+/* TECH ICON */
+
+function TechIcon({ label }) {
+  const icons = {
+    "Next.js": Layers,
+    React: Atom,
+    "Tailwind CSS": Paintbrush,
+    Tailwind: Paintbrush,
+    "Three.js": Box,
+    GSAP: Zap,
+    JavaScript: Code2,
+    Node: Code2,
+    Security: Shield,
+  };
+
+  const Icon = icons[label] ?? Code2;
+
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="tech-icon flex flex-col items-center gap-2">
       <Icon size={26} className="text-[#ffef4d]/40" />
       <span className="text-xs text-[#ffef4d]/20">{label}</span>
     </div>
   );
 }
+
+/* INFO BLOCK */
 
 function InfoBlock({ title, value }) {
   return (
