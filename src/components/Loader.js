@@ -3,6 +3,14 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+/* ---------------- CONFIG ---------------- */
+
+const LOADER_INTERVAL = 100; // speed of percentage updates
+const LOADER_EXIT_DELAY = 500; // delay after reaching 100 before closing loader
+const PROGRESS_STEP_MAX = 10; // max random increment
+
+/* ---------------------------------------- */
+
 export default function Loader({ onComplete }) {
   const [count, setCount] = useState(0);
 
@@ -11,15 +19,17 @@ export default function Loader({ onComplete }) {
       setCount((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
+
           setTimeout(() => {
             if (onComplete) onComplete();
-          }, 500);
+          }, LOADER_EXIT_DELAY);
+
           return 100;
         }
 
-        return prev + Math.floor(Math.random() * 10) + 1;
+        return prev + Math.floor(Math.random() * PROGRESS_STEP_MAX) + 1;
       });
-    }, 100);
+    }, LOADER_INTERVAL);
 
     return () => clearInterval(timer);
   }, [onComplete]);
@@ -27,7 +37,13 @@ export default function Loader({ onComplete }) {
   return (
     <motion.div
       initial={{ opacity: 1 }}
-      exit={{ y: "-100%", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }}
+      exit={{
+        y: "-100%",
+        transition: {
+          duration: 1,
+          ease: [0.16, 1, 0.3, 1],
+        },
+      }}
       className="fixed inset-0 z-[200] bg-[#26283B] flex flex-col items-center justify-center"
     >
       <div className="relative overflow-hidden h-24 flex items-center">
