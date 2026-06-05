@@ -12,6 +12,7 @@ import TransitionOverlay from "@/components/TransitionOverlay";
 import Loader from "@/components/Loader";
 import DockNavbar from "@/components/DockNavbar";
 import AboutPage from "@/components/AboutPage";
+import TechStack from "../TechStack";
 
 export default function PageContent() {
   const [activeSection, setActiveSection] = useState("home");
@@ -73,6 +74,10 @@ export default function PageContent() {
           <>
             <section id="home">
               <Hero />
+            </section>
+
+            <section id="techstack">
+              <TechStack/>
             </section>
 
             <section id="about">

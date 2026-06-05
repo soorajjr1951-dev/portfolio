@@ -13,6 +13,10 @@ import {
   Box,
   Shield,
   Zap,
+  LayoutTemplate,
+  LayoutGrid,
+  FileCode2,
+  Palette,
 } from "lucide-react";
 import gsap from "gsap";
 import { useTransition } from "@/context/TransitionContext";
@@ -179,6 +183,11 @@ function TechIcon({ label }) {
     JavaScript: Code2,
     Node: Code2,
     Security: Shield,
+    Wordpress: LayoutTemplate,
+    Elementor: LayoutGrid,
+    HTML: FileCode2,
+    CSS: Palette,
+    JS: Code2,
   };
 
   const Icon = icons[label] ?? Code2;

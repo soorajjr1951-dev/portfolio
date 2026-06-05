@@ -1,3 +1,6 @@
+import { Framer } from "lucide-react";
+import { title } from "process";
+
 export const PROJECTS = [
   {
     id: "western-beach-ventures",
@@ -11,6 +14,42 @@ export const PROJECTS = [
     role: "Full Stack Developer",
     year: "2026",
     liveUrl: "https://www.westernbeachventures.com/",
+  },
+  {
+    id: "adtouch",
+    title: "Adtouch",
+    type: "Client Project",
+    category: "Digital Marketing Agency",
+    description: "Adtouch is an advertising agency website built to showcase their services and portfolio.",
+    image: "/adtouch.webp",
+    tags: ["Next.js", "GSAP", "Tailwind CSS", "Framer Motion"],
+    role: "Full Stack Developer",
+    year: "2026",
+    liveUrl: "https://adtouch.in/",
+  },
+  {
+    id: "kingston",
+    title: "Kingston",
+    type: "Client Project",
+    category: "Montessori Edugroup",
+    description: "Kingston Edugroup is a Montessori Edugroup website built to showcase their schools and services.",
+    image: "/kingston.png",
+    tags: ["Wordpress", "Elementor", "HTML", "CSS", "JS"],
+    role: "Frontend Developer",
+    year: "2026",
+    liveUrl: "https://kingstonedugroup.org/",
+  },
+  {
+    id: "lyceum",
+    title: "Lyceum Scholars Arena",
+    type: "Client Project",
+    category: "Educational Institution",
+    description: "Lyceum Scholars Arena is an educational institution website built to showcase their courses and services.",
+    image: "/lyceum.png",
+    tags: ["Wordpress", "Elementor", "HTML", "CSS", "JS"],
+    role: "Frontend Developer",
+    year: "2026",
+    liveUrl: "https://litacademy.in/"
   },
   {
     id: "ferrari-monza",

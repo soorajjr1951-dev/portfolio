@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 .will-change-transform {
   will-change: transform;
 }
