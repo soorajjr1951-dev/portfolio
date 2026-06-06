@@ -29,7 +29,7 @@ export const PROJECTS = [
   },
   {
     id: "kingston",
-    title: "Kingston",
+    title: "Kingston Edugroup",
     type: "Client Project",
     category: "Montessori Edugroup",
     description: "Kingston Edugroup is a Montessori Edugroup website built to showcase their schools and services.",
